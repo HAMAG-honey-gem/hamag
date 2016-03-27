@@ -104,10 +104,11 @@ AddDefaultCharset utf-8
     #RewriteRule .? - [E=TYPO3_CONTEXT:Production/Staging]
     #RewriteCond %{HTTP_HOST} ^www\.example\.com$
     #RewriteRule .? - [E=TYPO3_CONTEXT:Production]
+	
 
     # Using mod_rewrite in .htaccess files without knowing the RewriteBase
     # http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
-    RewriteBase /
+    RewriteBase /hamag
 
     # Store the current location in an environment variable CWD
     RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
@@ -146,6 +147,9 @@ AddDefaultCharset utf-8
     RewriteCond %{SCRIPT_FILENAME} -d [OR]
     RewriteCond %{SCRIPT_FILENAME} -f
     RewriteRule "(^|/)\." - [F]
+#    Redirect 301 shop http://hamag-maschinenbau.de/?id=13
+#    RewriteRule hamag-maschinenbau.de/shop$ hamag-maschinenbau.de/?id=13 [L]
+    RewriteRule /shop/?$ index.php?id=13 [L]
 </IfModule>
 
 
